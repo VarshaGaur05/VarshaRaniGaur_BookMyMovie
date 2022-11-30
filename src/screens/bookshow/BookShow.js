@@ -12,6 +12,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import { Link } from "react-router-dom";
+import '../../common/stylesheet/Common.css';
 
 const BookShow = (props) => {
   const [location, setLocation] = useState("");

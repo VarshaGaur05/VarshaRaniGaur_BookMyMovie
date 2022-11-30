@@ -13,7 +13,7 @@ import CardContent from "@material-ui/core/CardContent";
 
 const styles = (theme) => ({
     formControl: {
-        margin: theme.spacing(1/5),
+        margin: theme.spacing.unit,
         minWidth: 240,
         maxWidth: 240,
     },
@@ -152,7 +152,7 @@ function FilterCard(props) {
 
                 <FormControl className={classes.formControl}>
                     <InputLabel htmlFor="movies-name">Movies Name</InputLabel>
-                    <Input id="movies-name" value={movie} onChange={onMovieNameChanged} />
+                    <Input id="movies-name" value={props.movie} onChange={onMovieNameChanged} />
                 </FormControl>
 
                 <FormControl className={classes.formControl}>
@@ -161,7 +161,7 @@ function FilterCard(props) {
                         multiple
                         renderValue={(selected) => selected.map((x) => x.genre).join(', ')}
                         value={genre}
-                        onChange={genreChangeListener}>
+                        onChange={genreChangeListener}>                            
                         {
                             genres.map((item) => (
                                 <MenuItem key={"genre:" + item.id} value={item}>
@@ -200,7 +200,6 @@ function FilterCard(props) {
                     <TextField
                         label="Release Date Start"
                         type="date"
-                        defaultValue="dd-mm-yyyy"
                         InputLabelProps={{
                             shrink: true,
                         }}
@@ -212,12 +211,11 @@ function FilterCard(props) {
                 <FormControl className={classes.formControl}>
                     <TextField
                         label="Release Date End"
-                        type="date"
-                        defaultValue="dd-mm-yyyy"
+                        type="date"                       
                         InputLabelProps={{
                             shrink: true,
                         }}
-                        value={endDate}
+                        value={endDate? "dd-mm-yyyy": endDate}
                         onChange={onEndDateChanged}
                     />
                 </FormControl>

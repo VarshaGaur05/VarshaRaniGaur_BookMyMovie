@@ -11,6 +11,8 @@ import { Link } from 'react-router-dom';
 
 const Home = (props) => {
 
+    window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
+
     const [filterParam, setFilterParam] = useState({
         'title': '',
         'genres': '',
@@ -112,7 +114,7 @@ export function ReleasedMovies(props) {
 
     const [releasedMovies, setReleasedMovies] = useState([])
 
-    const { title, genres, artists, startDate, endDate } = props.filterParam;
+    const {title, genres, artists, startDate, endDate } = props.filterParam;
 
     const [defaultImage, setdefaultImage] = useState();
 
@@ -161,13 +163,15 @@ export function ReleasedMovies(props) {
             gap={10}
         >
             {
-                releasedMovies.map((movie) => (
+                releasedMovies.map((movie, index) => (
+                    <div key={index}>
                     <Link to={`/movie/${movie.id}`}>
                         <ImageListItem key={movie.id} className='back' >
                             <img src={movie.poster_url} alt={movie.title} onError={replaceImage}/>
                             <ImageListItemBar title={movie.title} subtitle={`Released Date : ${movie.release_date}`} />
                         </ImageListItem>
                     </Link>
+                    </div>
                 ))
             }
         </ImageList>

@@ -1,21 +1,36 @@
 .back-container {
     margin: 8px 0px 0px 24px;
     height: 24px;
-  }
-  
-  .back {
-    margin-left: 24px !important;
-    margin-top: 8px !important;
-    margin-bottom: 0px !important;
-    height: 24px;
-  }
-  .back a{
-    text-decoration: none;
-    font-weight: 600;
-  }
-  .details-container{ 
+}
+.detail-container {
     display: flex;
-  }
-  .emptyStar {
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: space-around;
+}
+.ratio-20 {
+    flex: 2;
+    margin: 10px;
+    margin: 8px 0px 0px 24px;
+}
+.ratio-60 {
+    flex: 6;
+    margin: 0 16px;
+}
+.field-container {
+    display: flex;
+}
+.field-label {
+    font-weight: bold;
+}
+.yellow {
+    color: yellow;
+    cursor: pointer;
+}
+.black {
     color: black;
-  }
+    cursor: pointer;
+}
+.artists-heading{
+    margin: 16px 0px;
+}

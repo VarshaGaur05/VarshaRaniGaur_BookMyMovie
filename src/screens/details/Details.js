@@ -9,7 +9,9 @@ import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
 import { makeStyles } from "@material-ui/styles";
-import '../../common/stylesheet/Common.css'
+import '../../common/stylesheet/Common.css';
+import AppLogo from '../../assets/logo.svg';
+
 function Details(props) {
   // states 
   const [movieDetail, setMovieDetail] = useState({})
@@ -110,6 +112,15 @@ function Details(props) {
       height: 350,
     },
   });
+
+  const [defaultImage, setdefaultImage] = useState();
+
+    // replace image function
+    const replaceImage = (error) => {
+        //replacement of broken Image
+        setdefaultImage(AppLogo);
+        error.target.src = defaultImage; 
+    }
   const classes = useStyles();
   return (
     <div>
@@ -122,7 +133,7 @@ function Details(props) {
       <div className='detail-container'>
         {/* Poster */}
         <div className='image-container ratio-20'>
-          <img src={movieDetail.poster_url} alt={movieDetail.title} width='226px' height='326px' />
+          <img src={movieDetail.poster_url} alt={movieDetail.title} width='226px' height='326px'  onError={replaceImage} />
         </div>
         {/* Movies Detail */}
         <div className='ratio-60'>
@@ -187,7 +198,7 @@ function Details(props) {
               {artists ? (
                 artists.map((artist) => (
                   <GridListTile key={artist.id}>
-                    <img src={artist.profile_url} alt={artist.first_name} />
+                    <img src={artist.profile_url} alt={artist.first_name}  onError={replaceImage} />
                     <GridListTileBar
                       title={artist.first_name + " " + artist.last_name}
                     />
